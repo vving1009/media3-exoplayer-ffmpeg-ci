@@ -43,7 +43,7 @@ jobs:
           ./build_ffmpeg.sh "${FFMPEG_MODULE_PATH}" "${NDK_PATH}" "${HOST_PLATFORM}" "${ANDROID_ABI}" "${ENABLED_DECODERS[@]}"
 
       - name: Upload Media3 Exoplayer FFmpeg
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Media3 Exoplayer FFmpeg
           path: media/libraries/decoder_ffmpeg/ffmpeg/android-libs/*
