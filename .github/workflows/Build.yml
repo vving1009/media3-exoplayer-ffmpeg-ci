@@ -20,7 +20,7 @@ jobs:
       - name: Fetch Media3 repository
         run: |
           cd "$GITHUB_WORKSPACE"
-          git clone https://github.com/google/ExoPlayer.git -b release-v2
+          # git clone https://github.com/google/ExoPlayer.git -b release-v2
           cd ExoPlayer
           FFMPEG_MODULE_PATH="$(pwd)/extensions/ffmpeg/src/main"
           cd "$GITHUB_WORKSPACE"
@@ -42,11 +42,14 @@ jobs:
           cd "${FFMPEG_MODULE_PATH}/jni"
           ./build_ffmpeg.sh "${FFMPEG_MODULE_PATH}" "${NDK_PATH}" "${HOST_PLATFORM}" "${ENABLED_DECODERS[@]}"
 
-      - name: List all files in workspace
-        run: find "$GITHUB_WORKSPACE" -type f -printf '%P\n' | sort
+      # - name: List all files in workspace
+      #   run: find "$GITHUB_WORKSPACE" -type f -printf '%P\n' | sort
+
+      - name: Check generated files
+        run: ls -la "$GITHUB_WORKSPACE/Exoplayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/"
   
       - name: Upload Exoplayer FFmpeg
         uses: actions/upload-artifact@v4
         with:
           name: Exoplayer FFmpeg
-          path: extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/*
+          path: Exoplayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/*
