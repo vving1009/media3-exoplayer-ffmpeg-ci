@@ -24,10 +24,10 @@ jobs:
           cd media
           FFMPEG_MODULE_PATH="$(pwd)/libraries/decoder_ffmpeg/src/main"
           cd "$GITHUB_WORKSPACE"
-          wget https://dl.google.com/android/repository/android-ndk-r26d-linux.zip
-          unzip android-ndk-r26d-linux.zip
-          rm android-ndk-r26d-linux.zip
-          NDK_PATH="$GITHUB_WORKSPACE"/android-ndk-r26d      
+          wget https://dl.google.com/android/repository/android-ndk-r26b-linux.zip
+          unzip android-ndk-r26b-linux.zip
+          rm android-ndk-r26b-linux.zip
+          NDK_PATH="$GITHUB_WORKSPACE"/android-ndk-r26b      
           HOST_PLATFORM="linux-x86_64"
           ANDROID_ABI=21
           cd "$GITHUB_WORKSPACE"
@@ -36,7 +36,7 @@ jobs:
           git checkout release/6.0
           FFMPEG_PATH="$(pwd)"
           cd "$GITHUB_WORKSPACE"
-          ENABLED_DECODERS=(alac aac dca)
+          ENABLED_DECODERS=(alac aac dca ape)
           cd "${FFMPEG_MODULE_PATH}/jni"
           ln -s "$FFMPEG_PATH" ffmpeg
           cd "${FFMPEG_MODULE_PATH}/jni"
