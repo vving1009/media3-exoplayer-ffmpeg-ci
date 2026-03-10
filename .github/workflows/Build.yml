@@ -39,7 +39,7 @@ jobs:
           ENABLED_DECODERS=(alac ape)
           cd "${FFMPEG_MODULE_PATH}/jni"
           ln -s "$FFMPEG_PATH" ffmpeg
-          cd "${FFMPEG_MODULE_PATH}/jni"
+          chmod +x ./build_ffmpeg.sh
           ./build_ffmpeg.sh "${FFMPEG_MODULE_PATH}" "${NDK_PATH}" "${HOST_PLATFORM}" "${ENABLED_DECODERS[@]}"
 
       # - name: List all files in workspace
