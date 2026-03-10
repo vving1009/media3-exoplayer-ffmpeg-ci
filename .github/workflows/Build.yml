@@ -1,4 +1,4 @@
-name: Build Media3 Exoplayer FFmpeg
+name: Build ExoPlayer FFmpeg
 
 on:
   workflow_dispatch:
@@ -17,7 +17,7 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
           
-      - name: Fetch Media3 repository
+      - name: Fetch ExoPlayer repository
         run: |
           cd "$GITHUB_WORKSPACE"
           # git clone https://github.com/google/ExoPlayer.git -b release-v2
@@ -46,10 +46,10 @@ jobs:
       #   run: find "$GITHUB_WORKSPACE" -type f -printf '%P\n' | sort
 
       - name: Check generated files
-        run: ls -la "$GITHUB_WORKSPACE/Exoplayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/"
+        run: ls -la "$GITHUB_WORKSPACE/ExoPlayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/"
   
-      - name: Upload Exoplayer FFmpeg
+      - name: Upload ExoPlayer FFmpeg
         uses: actions/upload-artifact@v4
         with:
-          name: Exoplayer FFmpeg
-          path: Exoplayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/*
+          name: ExoPlayer FFmpeg
+          path: ExoPlayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/*
