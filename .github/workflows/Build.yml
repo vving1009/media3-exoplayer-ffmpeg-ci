@@ -34,6 +34,7 @@ jobs:
           git clone git://source.ffmpeg.org/ffmpeg
           cd ffmpeg
           git checkout release/4.2
+          git status
           FFMPEG_PATH="$(pwd)"
           cd "$GITHUB_WORKSPACE"
           ENABLED_DECODERS=(alac ape)
@@ -48,11 +49,6 @@ jobs:
           echo "=== Modified and new files ==="
           git status --short
           echo ""
-          echo "=== Detailed changes ==="
-          git diff --name-status
-          echo ""
-          echo "=== Untracked files ==="
-          git ls-files --others --exclude-standard
           echo "=== Directory structure ==="
           ls -la "libavutil"
           
