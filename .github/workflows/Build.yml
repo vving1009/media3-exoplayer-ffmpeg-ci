@@ -44,7 +44,7 @@ jobs:
 
       - name: Check modified and new files in ffmpeg
         run: |
-          cd "$GITHUB_WORKSPACE/ffmpeg"
+          cd ffmpeg
           echo "=== Modified and new files ==="
           git status --short
           echo ""
@@ -53,6 +53,8 @@ jobs:
           echo ""
           echo "=== Untracked files ==="
           git ls-files --others --exclude-standard
+          echo "=== Directory structure ==="
+          ls -la "libavutil"
           
       - name: List all files in workspace
         run: |
