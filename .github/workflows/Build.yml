@@ -42,6 +42,18 @@ jobs:
           chmod +x ./build_ffmpeg.sh
           ./build_ffmpeg.sh "${FFMPEG_MODULE_PATH}" "${NDK_PATH}" "${HOST_PLATFORM}" "${ENABLED_DECODERS[@]}"
 
+      - name: Check modified and new files in ffmpeg
+        run: |
+          cd "$GITHUB_WORKSPACE/ffmpeg"
+          echo "=== Modified and new files ==="
+          git status --short
+          echo ""
+          echo "=== Detailed changes ==="
+          git diff --name-status
+          echo ""
+          echo "=== Untracked files ==="
+          git ls-files --others --exclude-standard
+          
       - name: List all files in workspace
         run: |
           echo "=== Directory structure ==="
@@ -60,4 +72,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ExoPlayer FFmpeg
-          path: ExoPlayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/*
+          path: |
+            ExoPlayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/*
+            ExoPlayer/extensions/ffmpeg/src/main/jni/ffmpeg/libavutil/avconfig.h
