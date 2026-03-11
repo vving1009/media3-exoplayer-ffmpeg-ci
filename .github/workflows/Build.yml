@@ -42,11 +42,11 @@ jobs:
           chmod +x ./build_ffmpeg.sh
           ./build_ffmpeg.sh "${FFMPEG_MODULE_PATH}" "${NDK_PATH}" "${HOST_PLATFORM}" "${ENABLED_DECODERS[@]}"
 
-      # - name: List all files in workspace
-      #   run: find "$GITHUB_WORKSPACE" -type f -printf '%P\n' | sort
+      - name: List all files in workspace
+        run: find "$GITHUB_WORKSPACE/ExoPlayer/extensions/ffmpeg/src/main/jni/" -type f -printf '%P\n' | sort
 
-      - name: Check generated files
-        run: ls -la "$GITHUB_WORKSPACE/ExoPlayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/"
+      #- name: Check generated files
+      #  run: ls -la "$GITHUB_WORKSPACE/ExoPlayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/"
   
       - name: Upload ExoPlayer FFmpeg
         uses: actions/upload-artifact@v4
