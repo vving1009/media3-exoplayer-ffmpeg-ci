@@ -42,15 +42,18 @@ jobs:
           ln -s "$FFMPEG_PATH" ffmpeg
           chmod +x ./build_ffmpeg.sh
           ./build_ffmpeg.sh "${FFMPEG_MODULE_PATH}" "${NDK_PATH}" "${HOST_PLATFORM}" "${ENABLED_DECODERS[@]}"
-
-      - name: Check modified and new files in ffmpeg
-        run: |
-          cd ffmpeg
           echo "=== Modified and new files ==="
           git status --short
-          echo ""
-          echo "=== Directory structure ==="
-          ls -la "libavutil"
+          echo "====="
+          
+      # - name: Check modified and new files in ffmpeg
+      #   run: |
+      #     cd ffmpeg
+      #     echo "=== Modified and new files ==="
+      #     git status --short
+      #     echo ""
+      #     echo "=== Directory structure ==="
+      #     ls -la "libavutil"
           
       - name: List all files in workspace
         run: |
