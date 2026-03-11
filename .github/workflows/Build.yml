@@ -45,7 +45,7 @@ jobs:
       - name: List all files in workspace
         run: |
           echo "=== Directory structure ==="
-          find "ExoPlayer/extensions/ffmpeg/src/main/jni" | sort
+          ls -laR "ExoPlayer/extensions/ffmpeg/src/main/jni"
           echo ""
           echo "=== File count ==="
           find "ExoPlayer/extensions/ffmpeg/src/main/jni" | wc -l
