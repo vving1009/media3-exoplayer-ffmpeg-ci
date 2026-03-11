@@ -49,6 +49,9 @@ jobs:
           echo ""
           echo "=== File count ==="
           find "ExoPlayer/extensions/ffmpeg/src/main/jni" | wc -l
+          echo "=== ffmpeg structure ==="
+          find "ffmpeg" -type f -printf '%P\n' | sort
+          echo ""
 
       #- name: Check generated files
       #  run: ls -la "$GITHUB_WORKSPACE/ExoPlayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/"
