@@ -43,7 +43,7 @@ jobs:
           chmod +x ./build_ffmpeg.sh
           ./build_ffmpeg.sh "${FFMPEG_MODULE_PATH}" "${NDK_PATH}" "${HOST_PLATFORM}" "${ENABLED_DECODERS[@]}"
           echo "=== Modified and new files ==="
-          cd ffmpeg
+          cd "$FFMPEG_PATH"
           git status --short
           echo "====="
           
