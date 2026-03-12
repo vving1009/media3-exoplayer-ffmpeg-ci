@@ -42,7 +42,7 @@ COMMON_OPTIONS="
 TOOLCHAIN_PREFIX="${NDK_PATH}/toolchains/llvm/prebuilt/${HOST_PLATFORM}/bin"
 for decoder in "${ENABLED_DECODERS[@]}"
 do
-    COMMON_OPTIONS="${COMMON_OPTIONS} --enable-decoder=${decoder}"
+    COMMON_OPTIONS="${COMMON_OPTIONS} --enable-decoder=${decoder} --enable-parser=${decoder}"
 done
 cd "${FFMPEG_MODULE_PATH}/jni/ffmpeg"
 ./configure \
