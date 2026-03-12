@@ -55,6 +55,10 @@ jobs:
       #     echo ""
       #     echo "=== Directory structure ==="
       #     ls -la "libavutil"
+
+      - name: Verify APE Support
+        run: |
+          nm ExoPlayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/arm64-v8a/libavcodec.a | grep ape
           
       - name: List all files in workspace
         run: |
