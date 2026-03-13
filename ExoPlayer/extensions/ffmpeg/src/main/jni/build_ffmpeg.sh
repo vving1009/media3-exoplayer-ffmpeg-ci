@@ -37,6 +37,7 @@ COMMON_OPTIONS="
     --disable-avresample
     --enable-swresample
     --extra-ldexeflags=-pie
+    --enable-zlib
     --enable-avformat
     --enable-protocol=file
     "
