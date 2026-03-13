@@ -39,8 +39,6 @@ COMMON_OPTIONS="
     --extra-ldexeflags=-pie
     --enable-avformat
     --enable-protocol=file
-    ...
-"
     "
 TOOLCHAIN_PREFIX="${NDK_PATH}/toolchains/llvm/prebuilt/${HOST_PLATFORM}/bin"
 for decoder in "${ENABLED_DECODERS[@]}"
