@@ -30,7 +30,7 @@ endif()
 set(ffmpeg_location "${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg")
 set(ffmpeg_binaries "${ffmpeg_location}/android-libs/${ANDROID_ABI}")
 
-foreach(ffmpeg_lib avutil swresample avcodec)
+foreach(ffmpeg_lib avutil swresample avcodec avformat)
     set(ffmpeg_lib_filename lib${ffmpeg_lib}.a)
     set(ffmpeg_lib_file_path ${ffmpeg_binaries}/${ffmpeg_lib_filename})
     add_library(
@@ -55,4 +55,5 @@ target_link_libraries(ffmpegJNI
                       PRIVATE swresample
                       PRIVATE avcodec
                       PRIVATE avutil
+                      PRIVATE avformat
                       PRIVATE ${android_log_lib})

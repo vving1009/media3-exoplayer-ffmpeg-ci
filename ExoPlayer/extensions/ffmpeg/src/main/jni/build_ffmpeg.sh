@@ -30,7 +30,6 @@ COMMON_OPTIONS="
     --disable-programs
     --disable-everything
     --disable-avdevice
-    --disable-avformat
     --disable-swscale
     --disable-postproc
     --disable-avfilter
@@ -38,11 +37,15 @@ COMMON_OPTIONS="
     --disable-avresample
     --enable-swresample
     --extra-ldexeflags=-pie
+    --enable-avformat
+    --enable-protocol=file
+    ...
+"
     "
 TOOLCHAIN_PREFIX="${NDK_PATH}/toolchains/llvm/prebuilt/${HOST_PLATFORM}/bin"
 for decoder in "${ENABLED_DECODERS[@]}"
 do
-    COMMON_OPTIONS="${COMMON_OPTIONS} --enable-decoder=${decoder} --enable-parser=${decoder}"
+    COMMON_OPTIONS="${COMMON_OPTIONS} --enable-decoder=${decoder} --enable-parser=${decoder} --enable-demuxer=${decoder}"
 done
 cd "${FFMPEG_MODULE_PATH}/jni/ffmpeg"
 ./configure \

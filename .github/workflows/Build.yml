@@ -42,10 +42,6 @@ jobs:
           ln -s "$FFMPEG_PATH" ffmpeg
           chmod +x ./build_ffmpeg.sh
           ./build_ffmpeg.sh "${FFMPEG_MODULE_PATH}" "${NDK_PATH}" "${HOST_PLATFORM}" "${ENABLED_DECODERS[@]}"
-          echo "=== Modified and new files ==="
-          cd "$FFMPEG_PATH"
-          git status --short
-          echo "====="
           
       # - name: Check modified and new files in ffmpeg
       #   run: |
@@ -56,20 +52,33 @@ jobs:
       #     echo "=== Directory structure ==="
       #     ls -la "libavutil"
 
+      
+      - name: Check modified and new files in ffmpeg
+        run: |
+          cd "$GITHUB_WORKSPACE/ffmpeg"
+          echo "=== Modified and new files ==="
+          git status --short
+          echo ""
+          echo "=== Detailed changes ==="
+          git diff --name-status
+          echo ""
+          echo "=== Untracked files ==="
+          git ls-files --others --exclude-standard
+
       - name: Verify APE Support
         run: |
           nm ExoPlayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/arm64-v8a/libavcodec.a | grep ape
           
-      - name: List all files in workspace
-        run: |
-          echo "=== Directory structure ==="
-          ls -laR "ExoPlayer/extensions/ffmpeg/src/main/jni"
-          echo ""
-          echo "=== File count ==="
-          find "ExoPlayer/extensions/ffmpeg/src/main/jni" | wc -l
-          echo "=== ffmpeg structure ==="
-          find "ffmpeg" -type f -printf '%P\n' | sort
-          echo ""
+      # - name: List all files in workspace
+      #   run: |
+      #     echo "=== Directory structure ==="
+      #     ls -laR "ExoPlayer/extensions/ffmpeg/src/main/jni"
+      #     echo ""
+      #     echo "=== File count ==="
+      #     find "ExoPlayer/extensions/ffmpeg/src/main/jni" | wc -l
+      #     echo "=== ffmpeg structure ==="
+      #     find "ffmpeg" -type f -printf '%P\n' | sort
+      #     echo ""
 
       #- name: Check generated files
       #  run: ls -la "$GITHUB_WORKSPACE/ExoPlayer/extensions/ffmpeg/src/main/jni/ffmpeg/android-libs/"
